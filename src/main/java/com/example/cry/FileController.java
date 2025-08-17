@@ -24,14 +24,14 @@ public class FileController {
 
    
 
-    @GetMapping("/data")
+    @GetMapping("/about")
     public String data() {
         System.out.println("data page accessed");
-        return "datapage";
+        return "about";
     }
     @GetMapping("/data2")
     public String homePage2() {
         System.out.println("home page accessed via /home");
-        return "data";
+        return "error_page";
     }
 }
