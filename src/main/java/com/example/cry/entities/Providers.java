@@ -1,4 +1,8 @@
 package com.example.cry.entities;
 
-public class providers {
+
+public enum Providers {
+
+    SELF, GOOGLE, GITHUB
+
 }
