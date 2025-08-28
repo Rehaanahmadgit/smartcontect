@@ -3,10 +3,20 @@ package com.example.cry.controllers;
 
 import java.util.*;
 
+
+import com.example.cry.entities.Contact;
+import com.example.cry.entities.User;
+import com.example.cry.form.ContactSearchForm;
+import com.example.cry.form.contectform;
+import com.example.cry.helper.AppConstants;
+import com.example.cry.helper.Helper;
+import com.example.cry.helper.Message;
+import com.example.cry.helper.MessageType;
 import com.example.cry.service.ContactService;
 import com.example.cry.service.ImageService;
 import com.example.cry.service.Userservice;
 import jakarta.validation.Valid;
+
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -38,13 +48,13 @@ public class ContactController {
     @Autowired
     private ImageService imageService;
 
-    @Autowired
-    private Userservice userService;
+  @Autowired
+    private Userservice userservice;
 
     @RequestMapping("/add")
     // add contact page: handler
     public String addContactView(Model model) {
-        ContactForm contactForm = new ContactForm();
+        contectform contactForm = new contectform();
 
         contactForm.setFavorite(true);
         model.addAttribute("contactForm", contactForm);
@@ -52,7 +62,7 @@ public class ContactController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String saveContact(@Valid @ModelAttribute ContactForm contactForm, BindingResult result,
+    public String saveContact(@Valid @ModelAttribute contectform contactForm, BindingResult result,
                               Authentication authentication, HttpSession session) {
 
         // process the form data
@@ -205,7 +215,7 @@ public class ContactController {
             Model model) {
 
         var contact = contactService.getById(contactId);
-        ContactForm contactForm = new ContactForm();
+       contectform contactForm = new contectform();
         contactForm.setName(contact.getName());
         contactForm.setEmail(contact.getEmail());
         contactForm.setPhoneNumber(contact.getPhoneNumber());
@@ -224,7 +234,7 @@ public class ContactController {
 
     @RequestMapping(value = "/update/{contactId}", method = RequestMethod.POST)
     public String updateContact(@PathVariable("contactId") String contactId,
-                                @Valid @ModelAttribute ContactForm contactForm,
+                                @Valid @ModelAttribute contectform contactForm,
                                 BindingResult bindingResult,
                                 Model model) {
 

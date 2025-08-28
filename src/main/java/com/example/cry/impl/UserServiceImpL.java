@@ -10,6 +10,7 @@ import com.example.cry.helper.AppConstants;
 import com.example.cry.helper.Helper;
 import com.example.cry.repositry.UserRepo;
 import com.example.cry.service.EmailService;
+import com.example.cry.service.Userservice;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class UserServiceImpL implements UserService {
+public class UserServiceImpL implements Userservice {
 
     @Autowired
     private UserRepo userRepo;

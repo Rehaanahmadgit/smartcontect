@@ -1,10 +1,8 @@
 package com.example.cry.entities;
 
-import com.example.cry.form.usercontactform;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.stereotype.Controller;
 
 import java.util.ArrayList;
 import java.util.List;

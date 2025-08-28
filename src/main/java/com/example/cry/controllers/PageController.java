@@ -1,6 +1,11 @@
 package com.example.cry.controllers;
 
 
+import com.example.cry.entities.User;
+import com.example.cry.form.UserForm;
+import com.example.cry.helper.Message;
+import com.example.cry.service.Userservice;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +24,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 public class PageController {
 
     @Autowired
-    private UserService userService;
+    private Userservice userService;
 
     @GetMapping("/")
     public String index() {
@@ -70,7 +75,7 @@ public class PageController {
     @GetMapping("/register")
     public String register(Model model) {
 
-        UserForm userForm = new UserForm();
+      UserForm userForm = new UserForm();
         // default data bhi daal sakte hai
         // userForm.setName("Durgesh");
         // userForm.setAbout("This is about : Write something about yourself");
@@ -112,7 +117,7 @@ public class PageController {
         // .build();
 
         User user = new User();
-        user.setName(userForm.getName());
+        user.setUsername(userForm.);
         user.setEmail(userForm.getEmail());
         user.setPassword(userForm.getPassword());
         user.setAbout(userForm.getAbout());
