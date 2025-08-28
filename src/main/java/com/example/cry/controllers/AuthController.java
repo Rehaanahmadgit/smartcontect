@@ -1,15 +1,15 @@
 package com.example.cry.controllers;
 
+import com.example.cry.entities.User;
+import com.example.cry.helper.Message;
+import com.example.cry.helper.MessageType;
+import com.example.cry.repositry.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.scm.entities.User;
-import com.scm.helpers.Message;
-import com.scm.helpers.MessageType;
-import com.scm.repsitories.UserRepo;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -32,7 +32,7 @@ public class AuthController {
             // user fetch hua hai :: process karna hai
 
             if (user.getEmailToken().equals(token)) {
-                user.setEmailVerified(true);
+                user.setEmailverified(true);
                 user.setEnabled(true);
                 userRepo.save(user);
                 session.setAttribute("message", Message.builder()

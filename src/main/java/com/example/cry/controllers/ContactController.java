@@ -2,9 +2,15 @@ package com.example.cry.controllers;
 
 
 import java.util.*;
+
+import com.example.cry.service.ContactService;
+import com.example.cry.service.ImageService;
+import com.example.cry.service.Userservice;
+import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,20 +21,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.scm.entities.Contact;
-import com.scm.entities.User;
-import com.scm.forms.ContactForm;
-import com.scm.forms.ContactSearchForm;
-import com.scm.helpers.AppConstants;
-import com.scm.helpers.Helper;
-import com.scm.helpers.Message;
-import com.scm.helpers.MessageType;
-import com.scm.services.ContactService;
-import com.scm.services.ImageService;
-import com.scm.services.UserService;
+
 
 import jakarta.servlet.http.HttpSession;
-import jakarta.validation.Valid;
+
 
 @Controller
 @RequestMapping("/user/contacts")
@@ -43,7 +39,7 @@ public class ContactController {
     private ImageService imageService;
 
     @Autowired
-    private UserService userService;
+    private Userservice userService;
 
     @RequestMapping("/add")
     // add contact page: handler
