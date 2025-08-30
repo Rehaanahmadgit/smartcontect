@@ -4,6 +4,7 @@ package com.example.cry.controllers;
 import com.example.cry.entities.User;
 import com.example.cry.form.UserForm;
 import com.example.cry.helper.Message;
+import com.example.cry.helper.MessageType;
 import com.example.cry.service.Userservice;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -117,12 +118,13 @@ public class PageController {
         // .build();
 
         User user = new User();
-        user.setUsername(userForm.);
+        user.setName(userForm.getName());
+
         user.setEmail(userForm.getEmail());
         user.setPassword(userForm.getPassword());
         user.setAbout(userForm.getAbout());
-        user.setPhoneNumber(userForm.getPhoneNumber());
         user.setEnabled(false);
+        user.setPhoneNumber(userForm.getPhoneNumber());
         user.setProfilePic(
                 "https://www.learncodewithdurgesh.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fdurgesh_sir.35c6cb78.webp&w=1920&q=75");
 

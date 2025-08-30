@@ -45,7 +45,7 @@ public class Securityconfig {
     private SecurityCustomUserDetailService userDetailService;
 
     @Autowired
-    private OAuthenticationsucesshandler handler;
+    private OAuthAuthenicationSuccessHandler handler;
 
     @Autowired
     private Authfailhandle authFailtureHandler;

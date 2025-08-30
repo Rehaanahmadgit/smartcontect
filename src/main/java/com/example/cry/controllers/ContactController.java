@@ -20,6 +20,7 @@ import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.data.domain.Page;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -83,7 +84,7 @@ public class ContactController {
         String username = Helper.getEmailOfLoggedInUser(authentication);
         // form ---> contact
 
-        User user = userService.getUserByEmail(username);
+        User user = userservice.getUserByEmail(username);
         // 2 process the contact picture
 
         // image process
@@ -137,7 +138,7 @@ public class ContactController {
         // load all the user contacts
         String username = Helper.getEmailOfLoggedInUser(authentication);
 
-        User user = userService.getUserByEmail(username);
+        User user = userservice.getUserByEmail(username);
 
         Page<Contact> pageContact = contactService.getByUser(user, page, size, sortBy, direction);
 
@@ -164,7 +165,7 @@ public class ContactController {
 
         logger.info("field {} keyword {}", contactSearchForm.getField(), contactSearchForm.getValue());
 
-        var user = userService.getUserByEmail(Helper.getEmailOfLoggedInUser(authentication));
+        var user = userservice.getUserByEmail(Helper.getEmailOfLoggedInUser(authentication));
 
         Page<Contact> pageContact = null;
         if (contactSearchForm.getField().equalsIgnoreCase("name")) {

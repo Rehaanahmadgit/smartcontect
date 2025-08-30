@@ -1,6 +1,7 @@
 package com.example.cry.valodation;
 
 import com.example.cry.entities.User;
+import com.example.cry.helper.AppConstants;
 import com.example.cry.repositry.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

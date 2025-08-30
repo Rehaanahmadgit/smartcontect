@@ -32,7 +32,7 @@ public class AuthController {
             // user fetch hua hai :: process karna hai
 
             if (user.getEmailToken().equals(token)) {
-                user.setEmailverified(true);
+                user.setEmailVerified(true);
                 user.setEnabled(true);
                 userRepo.save(user);
                 session.setAttribute("message", Message.builder()

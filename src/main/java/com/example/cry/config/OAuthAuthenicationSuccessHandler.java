@@ -24,10 +24,11 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@Component
-public class OAuthenticationsucesshandler implements AuthenticationSuccessHandler {
 
-    Logger logger = LoggerFactory.getLogger(OAuthenticationsucesshandler.class);
+@Component
+public class OAuthAuthenicationSuccessHandler implements AuthenticationSuccessHandler {
+
+    Logger logger = LoggerFactory.getLogger(OAuthAuthenicationSuccessHandler.class);
 
     @Autowired
     private UserRepo userRepo;
@@ -55,11 +56,9 @@ public class OAuthenticationsucesshandler implements AuthenticationSuccessHandle
         });
 
         User user = new User();
-        user.setUserid(UUID.randomUUID().toString());
-
-//        user.setRoleList(List.of(AppConstants.ROLE_USER));
-        user.setEmailverified(true);
-
+        user.setUserId(UUID.randomUUID().toString());
+        user.setRoleList(List.of(AppConstants.ROLE_USER));
+        user.setEmailVerified(true);
         user.setEnabled(true);
         user.setPassword("dummy");
 
@@ -69,13 +68,10 @@ public class OAuthenticationsucesshandler implements AuthenticationSuccessHandle
             // google attributes
 
             user.setEmail(oauthUser.getAttribute("email").toString());
-            user.setProfilepic(oauthUser.getAttribute("profilepic").toString());
-//            user.setProfilePic(oauthUser.getAttribute("picture").toString());
-            user.setUsername(oauthUser.getAttribute("username").toString());
-//            user.setName(oauthUser.getAttribute("name").toString());
-            user.setProviderid(oauthUser.getName());
-            user.setProviders(Providers.GOOGLE);
-
+            user.setProfilePic(oauthUser.getAttribute("picture").toString());
+            user.setName(oauthUser.getAttribute("name").toString());
+            user.setProviderUserId(oauthUser.getName());
+            user.setProvider(Providers.GOOGLE);
             user.setAbout("This account is created using google.");
 
         } else if (authorizedClientRegistrationId.equalsIgnoreCase("github")) {
@@ -89,12 +85,10 @@ public class OAuthenticationsucesshandler implements AuthenticationSuccessHandle
             String providerUserId = oauthUser.getName();
 
             user.setEmail(email);
-            user.setProfilepic(picture);
-           user.setUsername(name);
-           // user.setName(name);
-            user.setProviderid(providerUserId);
-          user.setProviders(Providers.GOOGLE);
-//            user.setProvider(Providers.GITHUB);
+            user.setProfilePic(picture);
+            user.setName(name);
+            user.setProviderUserId(providerUserId);
+            user.setProvider(Providers.GITHUB);
 
             user.setAbout("This account is created using github");
         }
